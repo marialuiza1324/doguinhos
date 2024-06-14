@@ -1,0 +1,19 @@
+<h1>Dogs#edit</h1>
+<p>Find me in app/views/dogs/edit.html.erb</p>
+
+<form action="<%= dog_path(@dog.id) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label>
+    Nome
+    <input type="text" name="name">
+  </label>
+  <label>
+    Raça
+    <input type="text" name="breed">
+  </label>
+  <label>
+    Cor
+    <input type="text" name="color">
+  </label>
+  <button type="submit">Editar</button>
+</form>

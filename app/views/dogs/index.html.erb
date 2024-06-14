@@ -1,0 +1,12 @@
+<h1>Dogs#index</h1>
+<p>Find me in app/views/dogs/index.html.erb</p>
+
+<% @dogs.each do |dog| %>
+  <p>Nome: <%= dog.name %></p>
+  <p>Raça: <%= dog.breed %></p>
+  <p>Cor: <%= dog.color %></p>
+
+  <%= link_to "Ver esse dog", dog_path(dog) %>
+<% end %>
+
+<%= link_to "New dog", new_dog_path %>
