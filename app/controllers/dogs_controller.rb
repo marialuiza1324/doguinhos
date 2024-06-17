@@ -4,6 +4,7 @@ class DogsController < ApplicationController
   end
 
   def new
+    @dog = Dog.new
   end
 
   def show
@@ -15,13 +16,17 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = Dog.create! name: params["name"], breed: params["breed"], color: params["color"]
-    redirect_to dog_path(@dog.id)
+    @dog = Dog.new dog_params
+    if @dog.save
+      redirect_to dog_path(@dog.id)
+    else
+      render :new, status: 422
+    end
   end
 
   def update
     dog = Dog.find params["id"]
-    dog.update! name: params["name"], breed: params["breed"], color: params["color"]
+    dog.update! dog_params
     redirect_to dog_path(dog.id)
   end
 
@@ -29,5 +34,9 @@ class DogsController < ApplicationController
     @dog = Dog.find params["id"]
     @dog.destroy!
     redirect_to dogs_path
+  end
+
+  def dog_params
+    params.require("dog").permit("name", "breed", "color")
   end
 end

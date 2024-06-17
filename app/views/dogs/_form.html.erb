@@ -1,0 +1,18 @@
+<%= form_with model: @dog do |form| %>
+
+  <% @dog.errors.full_messages.each do |error_message| %>
+    <p><%= error_message %></p>
+  <% end %>
+
+  <%= form.label :name, "Nome" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :breed, "Raça" %>
+  <%= form.text_field :breed %>
+
+  <%= form.label :color, "Cor" %>
+  <%= form.text_field :color %>
+
+  <%= form.submit %>
+
+<% end %>

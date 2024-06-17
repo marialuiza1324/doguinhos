@@ -1,18 +1,4 @@
 <h1>Dogs#new</h1>
 <p>Find me in app/views/dogs/new.html.erb</p>
 
-<form action="<%= dogs_path %>" method="post">
-  <label>
-    Nome
-    <input type="text" name="name">
-  </label>
-  <label>
-    Raça
-    <input type="text" name="breed">
-  </label>
-  <label>
-    Cor
-    <input type="text" name="color">
-  </label>
-  <button type="submit">Criar</button>
-</form>
+<%= render "form" %>
