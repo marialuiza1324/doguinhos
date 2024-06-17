@@ -1,0 +1,12 @@
+<h1>People#show</h1>
+
+<p>Nome: <%= @person.name %></p>
+<p>Email: <%= @person.email %></p>
+<p>Idade: <%= @person.age %></p>
+<p>Endereço: <%= @person.address %></p>
+
+<a href="<%= edit_person_path(@person) %>">Editar</a>
+<form action="<%= person_path(@person) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Excluir</button>
+</form>

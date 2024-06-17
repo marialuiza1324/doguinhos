@@ -1,0 +1,8 @@
+<h1>People#index</h1>
+
+<% @people.each do |person| %>
+  <p><%= person.name %></p>
+  <a href="<%= person_path(person) %>">Ver pessoa</a>
+<% end %>
+
+<a href="<%= new_person_path %>">Criar pessoa</a>

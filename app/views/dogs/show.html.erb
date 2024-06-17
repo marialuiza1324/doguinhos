@@ -3,9 +3,11 @@
 
 <p>Raça: <%= @dog.breed %></p>
 <p>Cor: <%= @dog.color %></p>
+<p>Tutor: <%= @dog.person_id %></p>
 
 <form action="<%= dog_path(@dog.id) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit">Apagar dog</button>
 </form>
+
 <a href="<%= edit_dog_path(@dog.id) %>">Editar dog</a>

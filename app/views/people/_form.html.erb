@@ -1,0 +1,19 @@
+<%= form_with model: @person do |form| %>
+
+  <% @person.errors.full_messages.each do |error_message| %>
+    <p><%= error_message %></p>
+  <% end %>
+
+  <%= form.label :name, "Nome" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :email, "Email" %>
+  <%= form.text_field :email %>
+
+  <%= form.label :age, "Idade" %>
+  <%= form.text_field :age %>
+
+  <%= form.label :address, "Endereço" %>
+  <%= form.text_field :address %>
+  <%= form.submit %>
+<% end %>

@@ -17,6 +17,7 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new dog_params
+
     if @dog.save
       redirect_to dog_path(@dog.id)
     else
@@ -25,9 +26,13 @@ class DogsController < ApplicationController
   end
 
   def update
-    dog = Dog.find params["id"]
-    dog.update! dog_params
-    redirect_to dog_path(dog.id)
+    @dog = Dog.find params["id"]
+
+    if @dog.update dog_params
+      redirect_to dog_path(@dog.id)
+    else
+      render :edit, status: 422
+    end
   end
 
   def destroy
@@ -37,6 +42,6 @@ class DogsController < ApplicationController
   end
 
   def dog_params
-    params.require("dog").permit("name", "breed", "color")
+    params.require("dog").permit("name", "breed", "color", "person_id")
   end
 end
