@@ -4,4 +4,6 @@ class Person < ApplicationRecord
   validates :age, presence: :true
   validates :address, presence: :true
   has_many :dogs
+
+  accepts_nested_attributes_for :dogs
 end

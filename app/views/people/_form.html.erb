@@ -15,5 +15,18 @@
 
   <%= form.label :address, "Endereço" %>
   <%= form.text_field :address %>
+
+    <%= form.fields_for :dogs do |dogs_form| %>
+      <h1>🐶</h1>
+      <%= dogs_form.label :name, "Nome" %>
+      <%= dogs_form.text_field :name %>
+
+      <%= dogs_form.label :breed, "Raça" %>
+      <%= dogs_form.text_field :breed %>
+
+      <%= dogs_form.label :color, "Cor" %>
+      <%= dogs_form.text_field :color %>
+    <% end %>
+
   <%= form.submit %>
 <% end %>

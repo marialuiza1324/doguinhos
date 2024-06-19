@@ -13,6 +13,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    @person.dogs.new
   end
 
   def create
@@ -26,8 +27,12 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find params["id"]
-    @person.update! person_params
-    redirect_to people_path
+
+    if @person.update person_params
+      redirect_to person_path(@person)
+    else
+      render :edit, status: 422
+    end
   end
 
   def destroy
@@ -37,6 +42,6 @@ class PeopleController < ApplicationController
   end
 
   def person_params
-    params.require("person").permit("name", "email", "age", "address")
+    params.require("person").permit("name", "email", "age", "address", "dogs_attributes" => ["name", "breed", "color"])
   end
 end
